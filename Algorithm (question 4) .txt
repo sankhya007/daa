@@ -1,0 +1,36 @@
+Algorithm: (question 4) 
+
+Input the weights and costs of the items.
+Calculate the cost-to-weight ratio for each item.
+Sort the items in descending order based on the cost-to-weight ratio.
+Iterate through the sorted items, adding as much of each item as possible to the knapsack until the knapsack is full.
+If the entire item can't be added, add a fraction of it such that the knapsack becomes full.
+Print the total cost accumulated in the knapsack.
+
+
+Algorithm: (question 2)
+
+Initialize the chessboard: Create a 4x4 board and initialize all cells to 0.
+Define a function to check if it's safe to place a queen at a given position:
+Check the row for another queen.
+Check the upper diagonal on the left side.
+Check the lower diagonal on the left side.
+Define a recursive function to solve the problem:
+If all queens are placed, print the solution.
+Try placing a queen in all rows of the current column:
+If placing the queen is safe, place the queen and recursively place the rest of the queens.
+If placing the queen leads to a solution, continue to the next column.
+If placing the queen does not lead to a solution, backtrack by removing the queen.
+Call the recursive function for the first column.
+Print all solutions found.
+
+Algorithm: (question 2)
+
+Initialize: Start with the entire array by setting the initial left index to 0 and the right index to the last index of the array.
+Base Case: If the left index is greater than the right index, the target is not present in the array. Return -1.
+Calculate Midpoint: Compute the midpoint of the current segment of the array.
+Comparison:
+If the target is equal to the element at the midpoint, return the midpoint index.
+If the target is less than the element at the midpoint, recursively search the left subarray.
+If the target is greater than the element at the midpoint, recursively search the right subarray.
+Return the result of the recursive search.
