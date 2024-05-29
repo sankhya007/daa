@@ -1451,3 +1451,96 @@ int main() {
 
     return 0;
 }
+
+
+
+//question 11(direct input )
+
+#include <stdio.h>
+#include <limits.h>
+
+// Function to find the minimum number of multiplications
+void matrixChainOrder(int p[], int n) {
+    int M[n][n];
+
+    // Initialize the diagonal to zero
+    for (int i = 1; i < n; i++)
+        M[i][i] = 0;
+
+    // L is the chain length
+    for (int L = 2; L < n; L++) {
+        for (int i = 1; i < n - L + 1; i++) {
+            int j = i + L - 1;
+            M[i][j] = INT_MAX;
+            for (int k = i; k <= j - 1; k++) {
+                int q = M[i][k] + M[k+1][j] + p[i-1] * p[k] * p[j];
+                if (q < M[i][j])
+                    M[i][j] = q;
+            }
+        }
+    }
+
+    printf("Minimum number of multiplications is %d\n", M[1][n-1]);
+}
+
+int main() {
+    int arr[] = {4, 10, 3, 12, 20, 7};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    matrixChainOrder(arr, size);
+
+    return 0;
+}
+
+
+
+//question 11 (user inpput )
+
+
+#include <stdio.h>
+#include <limits.h>
+
+// Function to find the minimum number of multiplications
+void matrixChainOrder(int p[], int n) {
+    int M[n][n];
+
+    // Initialize the diagonal to zero
+    for (int i = 1; i < n; i++)
+        M[i][i] = 0;
+
+    // L is the chain length
+    for (int L = 2; L < n; L++) {
+        for (int i = 1; i < n - L + 1; i++) {
+            int j = i + L - 1;
+            M[i][j] = INT_MAX;
+            for (int k = i; k <= j - 1; k++) {
+                int q = M[i][k] + M[k+1][j] + p[i-1] * p[k] * p[j];
+                if (q < M[i][j])
+                    M[i][j] = q;
+            }
+        }
+    }
+
+    printf("Minimum number of multiplications is %d\n", M[1][n-1]);
+}
+
+int main() {
+    int size;
+
+    // Prompt user for the number of matrices
+    printf("Enter the number of matrices: ");
+    scanf("%d", &size);
+
+    int arr[size + 1];
+
+    // Prompt user for the dimensions
+    printf("Enter the dimensions: \n");
+    for (int i = 0; i <= size; i++) {
+        printf("Dimension %d: ", i);
+        scanf("%d", &arr[i]);
+    }
+
+    matrixChainOrder(arr, size + 1);
+
+    return 0;
+}
